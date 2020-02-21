@@ -9,9 +9,8 @@ export interface IHomeViewprops {
     users: IUser[];
     showOnlyFavourite: boolean;
     setTextFilter: (value: string) => void;
-    toggleUserFavourite: (id: number) => void;
+    changeUser: (user: IUser) => void;
     toggleFavourite: (checked: boolean) => void;
-
 }
 
 const HomeView = (props: IHomeViewprops) => {
@@ -20,7 +19,7 @@ const HomeView = (props: IHomeViewprops) => {
             <Search onSearch={props.setTextFilter} />
             <Toggle id="favourite-toggle" checked={props.showOnlyFavourite} onChange={props.toggleFavourite} />
             <div className="profiles">
-                {props.users.map((user, index) => <ProfileCard key={index} user={user} toggleFavourite={props.toggleUserFavourite} />)}
+                {props.users.map((user, index) => <ProfileCard key={index} user={user} changeUser={props.changeUser} />)}
             </div>
         </div>
     );

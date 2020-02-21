@@ -15,5 +15,4 @@ export interface IAppState {
         favouriteOnly: boolean;
     }
     users: IUser[];
-    filteredUsers: IUser[];
 }

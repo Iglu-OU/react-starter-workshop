@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {
   BrowserRouter as Router,
@@ -12,24 +12,28 @@ import Header from "./components/header/header";
 import HomeView from "./views/home";
 import AboutView from "./views/about";
 import DetailView from "./views/detail";
-
-import {IAppState} from "./typings";
-import {users} from "./data";
-
-const AppDefaultState: IAppState = {
-  filters: {
-    text: '',
-    favouriteOnly: false,
-  },
-  users: users,
-  filteredUsers: users,
-}
+import {IUser} from "./typings";
 
 const App = () => {
-  const [state, setState] = React.useState<IAppState>(AppDefaultState);
+  const [users, setUsers] = React.useState<IUser[]>([]);
+  const [filters, setFilters] = React.useState({text: '', favouriteOnly: false});
 
-  const getUser = (id) => {
-    return state.users.find(user => user.id.toString() === id);
+  useEffect(() => {
+    fetch('http://localhost:3003/users/')
+        .then(res => res.json())
+        .then(response => {
+          setUsers(response);
+        })
+  })
+
+  const changeUser = (user) => {
+    fetch(`http://localhost:3003/users/${user.id}`, {
+      method: 'PUT',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user)
+    })
   };
 
   const getFilteredUsers = (users, filters) => {
@@ -45,35 +49,19 @@ const App = () => {
   };
 
   const setTextFilter = (value: string) => {
-    const newFilters = {
-      ...state.filters,
-      text: value,
-    };
 
-    setState((prevState) => ({
+    setFilters((prevState) => ({
       ...prevState,
-      filters: newFilters,
+      text: value,
     }));
   };
 
   const toggleFavourite = () => {
-    setState(prevState => ({
-        ...prevState,
-        filters: {
-          ...prevState.filters,
-          favouriteOnly: !prevState.filters.favouriteOnly,
-        }
-    }))
-  }
-
-  const toggleUserFavourite = (id) => {
-    const newUsers = state.users.map(user => user.id === id ? {...user, isFavourite: !user.isFavourite} : user);
-
-    setState((prevState => ({
+    setFilters((prevState) => ({
       ...prevState,
-      users: newUsers,
-    })))
-  };
+      favouriteOnly: !prevState.favouriteOnly,
+    }));
+  }
 
   return (
     <Router>
@@ -81,17 +69,17 @@ const App = () => {
         <Container isMain={true}>
           <Switch>
             <Route path="/detail/:id">
-              <DetailView getUser={getUser} toggleFavourite={toggleUserFavourite} />
+              <DetailView changeUser={changeUser} />
             </Route>
             <Route path="/about">
               <AboutView/>
             </Route>
             <Route path="/">
               <HomeView
-                  users={getFilteredUsers(state.users, state.filters)}
-                  showOnlyFavourite={state.filters.favouriteOnly}
+                  users={getFilteredUsers(users, filters)}
+                  showOnlyFavourite={filters.favouriteOnly}
                   setTextFilter={setTextFilter}
-                  toggleUserFavourite={toggleUserFavourite}
+                  changeUser={changeUser}
                   toggleFavourite={toggleFavourite}
               />
             </Route>

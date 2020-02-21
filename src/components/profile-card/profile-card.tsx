@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 
 interface IProfileCardProps {
     user: IUser;
-    toggleFavourite: (id: number) => void;
+    changeUser: (user: IUser) => void;
 }
 
 const ProfileCard = (props: IProfileCardProps) => {
@@ -34,7 +34,7 @@ const ProfileCard = (props: IProfileCardProps) => {
             </Link>
             <p className="profile-card__occupation">{user.occupation}</p>
             <p>{user.university}</p>
-            <button className={starIconBEM()} onClick={() => props.toggleFavourite(user.id)}>
+            <button className={starIconBEM()} onClick={() => props.changeUser({...user, isFavourite: !user.isFavourite})}>
                 <i className="fa fa-star" />
             </button>
         </div>
