@@ -1,0 +1,20 @@
+.search {
+    margin-bottom: 8px;
+}
+
+.search__button {
+    padding: 8px;
+    background: #2b303b;
+    border: none;
+    color: #63717f;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.search__input {
+    padding: 8px;
+    background: #2b303b;
+    border: none;
+    font-size: 20px;
+    color: #f2f2f2;
+}

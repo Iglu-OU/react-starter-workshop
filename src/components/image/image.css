@@ -1,0 +1,22 @@
+.image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image--text {
+    border: 1px solid grey;
+}
+
+.image__text {
+    font-size: 22px;
+}
