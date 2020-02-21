@@ -8,6 +8,7 @@ export const users: IUser[] = [
         isFavourite: false,
         occupation: 'CEO & Founder, Example',
         university: 'TalTech University',
+        skills: ['Coding'],
         avatar: 'https://api.adorable.io/avatars/285/abott@adorable.png'
     },
     {
@@ -17,6 +18,7 @@ export const users: IUser[] = [
         isFavourite: true,
         occupation: 'Front-End Lead',
         university: 'Harvard University',
+        skills: ['Coding'],
     },
     {
         id: 3,
@@ -25,6 +27,7 @@ export const users: IUser[] = [
         isFavourite: false,
         occupation: 'Project Manager',
         university: 'Harvard University',
+        skills: ['Coding'],
         avatar: 'https://api.adorable.io/avatars/285/a3o4t@adorable.png'
     },
     {
@@ -34,6 +37,7 @@ export const users: IUser[] = [
         isFavourite: false,
         occupation: 'CEO & Founder, Example',
         university: 'TalTech University',
+        skills: ['Coding'],
         avatar: 'https://api.adorable.io/avatars/285/a1tt@adorable.png'
     },
     {
@@ -43,6 +47,7 @@ export const users: IUser[] = [
         isFavourite: true,
         occupation: 'CEO & Founder, Example',
         university: 'TalTech University',
+        skills: ['Coding'],
         avatar: 'https://api.adorable.io/avatars/285/a3btt@adorable.png'
     }
 ]

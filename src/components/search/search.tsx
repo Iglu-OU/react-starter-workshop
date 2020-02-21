@@ -21,9 +21,6 @@ const Search = (props: ISearchProps) => {
 
     return (
         <form className="search" onSubmit={onSubmit}>
-            <button className="search__button" type="submit">
-                <i className="fa fa-search" />
-            </button>
             <input
                 className="search__input"
                 onChange={onChange}
@@ -31,6 +28,9 @@ const Search = (props: ISearchProps) => {
                 type="search"
                 placeholder="Search"
             />
+            <button className="search__button" type="submit">
+                <i className="fa fa-search" />
+            </button>
         </form>
     );
 }

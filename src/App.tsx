@@ -67,7 +67,6 @@ const App = () => {
   }
 
   const toggleUserFavourite = (id) => {
-    console.log('toggled');
     const newUsers = state.users.map(user => user.id === id ? {...user, isFavourite: !user.isFavourite} : user);
 
     setState((prevState => ({

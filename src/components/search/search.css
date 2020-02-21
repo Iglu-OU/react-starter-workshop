@@ -11,6 +11,10 @@
     cursor: pointer;
 }
 
+.search__button:hover {
+    color: #f2f2f2;
+}
+
 .search__input {
     padding: 8px;
     background: #2b303b;

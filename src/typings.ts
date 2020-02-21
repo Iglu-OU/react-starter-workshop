@@ -6,6 +6,7 @@ export interface IUser {
     avatar?: string;
     occupation?: string;
     university?: string;
+    skills: string[];
 }
 
 export interface IAppState {

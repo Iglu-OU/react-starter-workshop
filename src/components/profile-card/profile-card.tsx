@@ -27,10 +27,7 @@ const ProfileCard = (props: IProfileCardProps) => {
         <div className="profile-card">
             <Image alt={userName} src={user.avatar} />
             <Link
-                to={{
-                    pathname: `/detail/${user.id}`,
-                    state: user,
-                }}
+                to={`/detail/${user.id}`}
                 className="profile-card__name"
             >
                 <h1>{userName}</h1>
